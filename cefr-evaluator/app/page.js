@@ -53,11 +53,13 @@ export default function Home() {
       rec.onresult = (e) => {
         let interim = '';
         for (let i = e.resultIndex; i < e.results.length; i++) {
-          const t = e.results[i].transcript;
-          if (e.results[i].isFinal) { transcriptRef.current += t + ' '; }
+          const result = e.results[i];
+          const t = result && result[0] && result[0].transcript ? result[0].transcript : '';
+          if (result.isFinal) { transcriptRef.current += t + ' '; }
           else interim = t;
         }
-        setTranscript((transcriptRef.current + interim).trim() || 'Escuchando…');
+        const combined = (transcriptRef.current + interim).trim();
+        setTranscript(combined || 'Escuchando…');
       };
       rec.onerror = () => setTranscript(transcriptRef.current || 'Error de micrófono. Usa el modo texto.');
       rec.start();
