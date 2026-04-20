@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'CEFR English Evaluator · AI Assessment',
-  description: 'Evaluación inteligente de Speaking y Writing según el Marco Común Europeo',
+  title: 'Writing and Speaking Exam · Oxford Centre English',
+  description: 'Writing and Speaking exam evaluated by AI according to CEFR descriptors',
 }
 
 export default function RootLayout({ children }) {
